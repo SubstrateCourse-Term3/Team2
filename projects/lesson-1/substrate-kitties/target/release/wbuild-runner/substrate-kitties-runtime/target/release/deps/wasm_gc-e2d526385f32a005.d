@@ -1,0 +1,10 @@
+/Users/tingalin/Desktop/substrate-kitties/substrate/substrate-kitties/target/release/wbuild-runner/substrate-kitties-runtime/target/release/deps/wasm_gc-e2d526385f32a005.rmeta: /Users/tingalin/.cargo/registry/src/github.com-1ecc6299db9ec823/wasm-gc-api-0.1.11/src/lib.rs /Users/tingalin/.cargo/registry/src/github.com-1ecc6299db9ec823/wasm-gc-api-0.1.11/src/gc.rs /Users/tingalin/.cargo/registry/src/github.com-1ecc6299db9ec823/wasm-gc-api-0.1.11/src/error.rs /Users/tingalin/.cargo/registry/src/github.com-1ecc6299db9ec823/wasm-gc-api-0.1.11/src/bitvec.rs
+
+/Users/tingalin/Desktop/substrate-kitties/substrate/substrate-kitties/target/release/wbuild-runner/substrate-kitties-runtime/target/release/deps/libwasm_gc-e2d526385f32a005.rlib: /Users/tingalin/.cargo/registry/src/github.com-1ecc6299db9ec823/wasm-gc-api-0.1.11/src/lib.rs /Users/tingalin/.cargo/registry/src/github.com-1ecc6299db9ec823/wasm-gc-api-0.1.11/src/gc.rs /Users/tingalin/.cargo/registry/src/github.com-1ecc6299db9ec823/wasm-gc-api-0.1.11/src/error.rs /Users/tingalin/.cargo/registry/src/github.com-1ecc6299db9ec823/wasm-gc-api-0.1.11/src/bitvec.rs
+
+/Users/tingalin/Desktop/substrate-kitties/substrate/substrate-kitties/target/release/wbuild-runner/substrate-kitties-runtime/target/release/deps/wasm_gc-e2d526385f32a005.d: /Users/tingalin/.cargo/registry/src/github.com-1ecc6299db9ec823/wasm-gc-api-0.1.11/src/lib.rs /Users/tingalin/.cargo/registry/src/github.com-1ecc6299db9ec823/wasm-gc-api-0.1.11/src/gc.rs /Users/tingalin/.cargo/registry/src/github.com-1ecc6299db9ec823/wasm-gc-api-0.1.11/src/error.rs /Users/tingalin/.cargo/registry/src/github.com-1ecc6299db9ec823/wasm-gc-api-0.1.11/src/bitvec.rs
+
+/Users/tingalin/.cargo/registry/src/github.com-1ecc6299db9ec823/wasm-gc-api-0.1.11/src/lib.rs:
+/Users/tingalin/.cargo/registry/src/github.com-1ecc6299db9ec823/wasm-gc-api-0.1.11/src/gc.rs:
+/Users/tingalin/.cargo/registry/src/github.com-1ecc6299db9ec823/wasm-gc-api-0.1.11/src/error.rs:
+/Users/tingalin/.cargo/registry/src/github.com-1ecc6299db9ec823/wasm-gc-api-0.1.11/src/bitvec.rs:

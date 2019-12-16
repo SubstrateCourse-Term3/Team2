@@ -1,0 +1,1 @@
+cargo:rustc-env=WBG_VERSION=f96e468ac

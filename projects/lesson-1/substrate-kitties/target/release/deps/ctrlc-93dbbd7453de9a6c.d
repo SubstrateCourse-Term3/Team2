@@ -1,0 +1,11 @@
+/Users/tingalin/Desktop/substrate-kitties/substrate/substrate-kitties/target/release/deps/ctrlc-93dbbd7453de9a6c.rmeta: /Users/tingalin/.cargo/registry/src/github.com-1ecc6299db9ec823/ctrlc-3.1.3/src/lib.rs /Users/tingalin/.cargo/registry/src/github.com-1ecc6299db9ec823/ctrlc-3.1.3/src/error.rs /Users/tingalin/.cargo/registry/src/github.com-1ecc6299db9ec823/ctrlc-3.1.3/src/platform/mod.rs /Users/tingalin/.cargo/registry/src/github.com-1ecc6299db9ec823/ctrlc-3.1.3/src/platform/unix/mod.rs /Users/tingalin/.cargo/registry/src/github.com-1ecc6299db9ec823/ctrlc-3.1.3/src/signal.rs
+
+/Users/tingalin/Desktop/substrate-kitties/substrate/substrate-kitties/target/release/deps/libctrlc-93dbbd7453de9a6c.rlib: /Users/tingalin/.cargo/registry/src/github.com-1ecc6299db9ec823/ctrlc-3.1.3/src/lib.rs /Users/tingalin/.cargo/registry/src/github.com-1ecc6299db9ec823/ctrlc-3.1.3/src/error.rs /Users/tingalin/.cargo/registry/src/github.com-1ecc6299db9ec823/ctrlc-3.1.3/src/platform/mod.rs /Users/tingalin/.cargo/registry/src/github.com-1ecc6299db9ec823/ctrlc-3.1.3/src/platform/unix/mod.rs /Users/tingalin/.cargo/registry/src/github.com-1ecc6299db9ec823/ctrlc-3.1.3/src/signal.rs
+
+/Users/tingalin/Desktop/substrate-kitties/substrate/substrate-kitties/target/release/deps/ctrlc-93dbbd7453de9a6c.d: /Users/tingalin/.cargo/registry/src/github.com-1ecc6299db9ec823/ctrlc-3.1.3/src/lib.rs /Users/tingalin/.cargo/registry/src/github.com-1ecc6299db9ec823/ctrlc-3.1.3/src/error.rs /Users/tingalin/.cargo/registry/src/github.com-1ecc6299db9ec823/ctrlc-3.1.3/src/platform/mod.rs /Users/tingalin/.cargo/registry/src/github.com-1ecc6299db9ec823/ctrlc-3.1.3/src/platform/unix/mod.rs /Users/tingalin/.cargo/registry/src/github.com-1ecc6299db9ec823/ctrlc-3.1.3/src/signal.rs
+
+/Users/tingalin/.cargo/registry/src/github.com-1ecc6299db9ec823/ctrlc-3.1.3/src/lib.rs:
+/Users/tingalin/.cargo/registry/src/github.com-1ecc6299db9ec823/ctrlc-3.1.3/src/error.rs:
+/Users/tingalin/.cargo/registry/src/github.com-1ecc6299db9ec823/ctrlc-3.1.3/src/platform/mod.rs:
+/Users/tingalin/.cargo/registry/src/github.com-1ecc6299db9ec823/ctrlc-3.1.3/src/platform/unix/mod.rs:
+/Users/tingalin/.cargo/registry/src/github.com-1ecc6299db9ec823/ctrlc-3.1.3/src/signal.rs:

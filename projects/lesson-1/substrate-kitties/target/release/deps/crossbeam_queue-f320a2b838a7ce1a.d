@@ -1,0 +1,10 @@
+/Users/tingalin/Desktop/substrate-kitties/substrate/substrate-kitties/target/release/deps/crossbeam_queue-f320a2b838a7ce1a.rmeta: /Users/tingalin/.cargo/registry/src/github.com-1ecc6299db9ec823/crossbeam-queue-0.2.0/src/lib.rs /Users/tingalin/.cargo/registry/src/github.com-1ecc6299db9ec823/crossbeam-queue-0.2.0/src/array_queue.rs /Users/tingalin/.cargo/registry/src/github.com-1ecc6299db9ec823/crossbeam-queue-0.2.0/src/err.rs /Users/tingalin/.cargo/registry/src/github.com-1ecc6299db9ec823/crossbeam-queue-0.2.0/src/seg_queue.rs
+
+/Users/tingalin/Desktop/substrate-kitties/substrate/substrate-kitties/target/release/deps/libcrossbeam_queue-f320a2b838a7ce1a.rlib: /Users/tingalin/.cargo/registry/src/github.com-1ecc6299db9ec823/crossbeam-queue-0.2.0/src/lib.rs /Users/tingalin/.cargo/registry/src/github.com-1ecc6299db9ec823/crossbeam-queue-0.2.0/src/array_queue.rs /Users/tingalin/.cargo/registry/src/github.com-1ecc6299db9ec823/crossbeam-queue-0.2.0/src/err.rs /Users/tingalin/.cargo/registry/src/github.com-1ecc6299db9ec823/crossbeam-queue-0.2.0/src/seg_queue.rs
+
+/Users/tingalin/Desktop/substrate-kitties/substrate/substrate-kitties/target/release/deps/crossbeam_queue-f320a2b838a7ce1a.d: /Users/tingalin/.cargo/registry/src/github.com-1ecc6299db9ec823/crossbeam-queue-0.2.0/src/lib.rs /Users/tingalin/.cargo/registry/src/github.com-1ecc6299db9ec823/crossbeam-queue-0.2.0/src/array_queue.rs /Users/tingalin/.cargo/registry/src/github.com-1ecc6299db9ec823/crossbeam-queue-0.2.0/src/err.rs /Users/tingalin/.cargo/registry/src/github.com-1ecc6299db9ec823/crossbeam-queue-0.2.0/src/seg_queue.rs
+
+/Users/tingalin/.cargo/registry/src/github.com-1ecc6299db9ec823/crossbeam-queue-0.2.0/src/lib.rs:
+/Users/tingalin/.cargo/registry/src/github.com-1ecc6299db9ec823/crossbeam-queue-0.2.0/src/array_queue.rs:
+/Users/tingalin/.cargo/registry/src/github.com-1ecc6299db9ec823/crossbeam-queue-0.2.0/src/err.rs:
+/Users/tingalin/.cargo/registry/src/github.com-1ecc6299db9ec823/crossbeam-queue-0.2.0/src/seg_queue.rs:
