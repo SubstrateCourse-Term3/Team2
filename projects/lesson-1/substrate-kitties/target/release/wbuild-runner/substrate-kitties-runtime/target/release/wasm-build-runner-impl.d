@@ -1,1 +1,0 @@
-/Users/tingalin/Desktop/substrate-kitties/substrate/substrate-kitties/target/release/wbuild-runner/substrate-kitties-runtime/target/release/wasm-build-runner-impl: /Users/tingalin/Desktop/substrate-kitties/substrate/substrate-kitties/target/release/wbuild-runner/substrate-kitties-runtime/src/main.rs

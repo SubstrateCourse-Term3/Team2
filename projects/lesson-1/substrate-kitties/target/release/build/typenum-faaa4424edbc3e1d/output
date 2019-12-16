@@ -1,2 +1,0 @@
-cargo:rustc-env=TYPENUM_BUILD_OP=/Users/tingalin/Desktop/substrate-kitties/substrate/substrate-kitties/target/release/build/typenum-faaa4424edbc3e1d/out/consts.rs
-cargo:rustc-env=TYPENUM_BUILD_CONSTS=/Users/tingalin/Desktop/substrate-kitties/substrate/substrate-kitties/target/release/build/typenum-faaa4424edbc3e1d/out/op.rs

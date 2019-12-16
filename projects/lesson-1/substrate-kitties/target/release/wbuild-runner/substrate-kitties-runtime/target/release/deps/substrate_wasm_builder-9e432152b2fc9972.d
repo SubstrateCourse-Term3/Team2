@@ -1,9 +1,0 @@
-/Users/tingalin/Desktop/substrate-kitties/substrate/substrate-kitties/target/release/wbuild-runner/substrate-kitties-runtime/target/release/deps/substrate_wasm_builder-9e432152b2fc9972.rmeta: /Users/tingalin/.cargo/registry/src/github.com-1ecc6299db9ec823/substrate-wasm-builder-1.0.8/src/lib.rs /Users/tingalin/.cargo/registry/src/github.com-1ecc6299db9ec823/substrate-wasm-builder-1.0.8/src/prerequisites.rs /Users/tingalin/.cargo/registry/src/github.com-1ecc6299db9ec823/substrate-wasm-builder-1.0.8/src/wasm_project.rs
-
-/Users/tingalin/Desktop/substrate-kitties/substrate/substrate-kitties/target/release/wbuild-runner/substrate-kitties-runtime/target/release/deps/libsubstrate_wasm_builder-9e432152b2fc9972.rlib: /Users/tingalin/.cargo/registry/src/github.com-1ecc6299db9ec823/substrate-wasm-builder-1.0.8/src/lib.rs /Users/tingalin/.cargo/registry/src/github.com-1ecc6299db9ec823/substrate-wasm-builder-1.0.8/src/prerequisites.rs /Users/tingalin/.cargo/registry/src/github.com-1ecc6299db9ec823/substrate-wasm-builder-1.0.8/src/wasm_project.rs
-
-/Users/tingalin/Desktop/substrate-kitties/substrate/substrate-kitties/target/release/wbuild-runner/substrate-kitties-runtime/target/release/deps/substrate_wasm_builder-9e432152b2fc9972.d: /Users/tingalin/.cargo/registry/src/github.com-1ecc6299db9ec823/substrate-wasm-builder-1.0.8/src/lib.rs /Users/tingalin/.cargo/registry/src/github.com-1ecc6299db9ec823/substrate-wasm-builder-1.0.8/src/prerequisites.rs /Users/tingalin/.cargo/registry/src/github.com-1ecc6299db9ec823/substrate-wasm-builder-1.0.8/src/wasm_project.rs
-
-/Users/tingalin/.cargo/registry/src/github.com-1ecc6299db9ec823/substrate-wasm-builder-1.0.8/src/lib.rs:
-/Users/tingalin/.cargo/registry/src/github.com-1ecc6299db9ec823/substrate-wasm-builder-1.0.8/src/prerequisites.rs:
-/Users/tingalin/.cargo/registry/src/github.com-1ecc6299db9ec823/substrate-wasm-builder-1.0.8/src/wasm_project.rs:

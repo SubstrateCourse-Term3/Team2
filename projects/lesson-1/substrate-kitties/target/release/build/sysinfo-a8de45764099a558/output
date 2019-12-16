@@ -1,2 +1,0 @@
-cargo:rustc-link-lib=framework=IOKit
-cargo:rustc-link-lib=framework=CoreFoundation
