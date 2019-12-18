@@ -95,7 +95,7 @@ pub const VERSION: RuntimeVersion = RuntimeVersion {
 	spec_name: create_runtime_str!("substrate-kitties"),
 	impl_name: create_runtime_str!("substrate-kitties"),
 	authoring_version: 1,
-	spec_version: 1,
+	spec_version: 1, // increase when upgrading runtime
 	impl_version: 1,
 	apis: RUNTIME_API_VERSIONS,
 };
