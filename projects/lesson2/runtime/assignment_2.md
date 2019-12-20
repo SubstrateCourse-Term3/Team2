@@ -58,11 +58,8 @@ fn DnaMerge(new_kittyA, new_kittyB) -> new_kitty {
 
 每个用户可以拥有零到多只猫
 遍历用户拥有的所有猫
-If AccountId && kittyId {
     OwnedKittiesArray get(kitty_of_owner_by_index): map (T::AccountId, u64) => T::Hash;
-        OwnedKittiesCount get(owned_kitty_count): map T::AccountId => u64;
-        OwnedKittiesIndex: map T::Hash => u64;
-	}
+        
 
 每只猫只有一个主人
 KittyOwner get(owner_of): map T::Hash => Option<T::AccountId>;
