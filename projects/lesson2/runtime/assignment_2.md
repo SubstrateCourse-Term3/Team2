@@ -32,13 +32,11 @@
 遍历所有加密猫
 AllKittiesIndex:: u64 每产生一个猫就有一个新的index ，从零开始
 
+
 每只猫都有自己的dna，为128bit的数据
 设计如何生成dna (伪代码算法）
 KittyDna: 
-Nonce: u64;
-let random_hash = (<system::Module<T>>::random_seed(), &sender, nonce)
-                .using_encoded(<T as system::Trait>::Hashing::hash);
-<Nonce<T>>::mutate(|n| *n += 1);
+let random_hash = math.random
 let new_kitty = Kitty {
                 id: random_hash,
                 dna: random_hash,
@@ -57,6 +55,7 @@ fn DnaMerge(new_kittyA, new_kittyB) -> new_kitty {
 
    }
 
+
 每个用户可以拥有零到多只猫
 遍历用户拥有的所有猫
 If AccountId && kittyId {
@@ -71,3 +70,6 @@ KittyOwner get(owner_of): map T::Hash => Option<T::AccountId>;
 链上存储加密猫数据
    AllKittiesCount get(all_kitties_count): u64;  全部猫数量
    AllKittiesIndex: map T::Hash => u64; 全部猫index
+   OwnedKittiesIndex: map T::Hash => u64;每个人的猫index
+   OwnedKittiesCount get(owned_kitty_count): map T::AccountId => u64;猫的主人
+   KittiesMap(KittyIndex, Kitty)猫ID和实例猫的对应
