@@ -34,7 +34,7 @@ public func getCats(userId){
     if userId=0{ 
         for (int i=0, i<owningShip.size();i++){
                     catIds=catIds+owningShip.value;
-        }
+        } 
     }else{
         for (int i=0, i<owningShip.size();i++){
             if userId=owningShip.key{
