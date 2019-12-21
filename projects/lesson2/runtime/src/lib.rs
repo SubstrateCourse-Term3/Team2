@@ -66,6 +66,9 @@ pub type DigestItem = generic::DigestItem<Hash>;
 /// Used for the module template in `./template.rs`
 mod template;
 
+/// Used for the module in './substrateKitties.rs'
+mod substrateKitties;
+
 /// Opaque types. These are used by the CLI to instantiate machinery that don't need to know
 /// the specifics of the runtime. They can then be made to be agnostic over specific formats
 /// of data like extrinsics, allowing for them to continue syncing the network through upgrades
@@ -253,6 +256,10 @@ construct_runtime!(
 		// Used for the module template in `./template.rs`
 		TemplateModule: template::{Module, Call, Storage, Event<T>},
 		RandomnessCollectiveFlip: randomness_collective_flip::{Module, Call, Storage},
+		
+		// Used for the module file in './substrateKitties.rs'
+		Substratekitties: substrateKitties::{Module, Call, Storage, Event<T>},
+		
 	}
 );
 
