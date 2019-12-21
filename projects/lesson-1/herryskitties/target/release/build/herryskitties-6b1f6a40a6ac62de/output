@@ -1,0 +1,5 @@
+cargo:rustc-env=VERGEN_SHA_SHORT=
+cargo:rerun-if-changed=.git/HEAD
+cargo:rerun-if-changed=.git/refs/heads/master
+
+cargo:rerun-if-changed=/root/substrate/herryskitties/.git/HEAD

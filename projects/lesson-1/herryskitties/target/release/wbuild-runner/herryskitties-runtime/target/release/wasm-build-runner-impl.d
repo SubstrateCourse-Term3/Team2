@@ -1,0 +1,1 @@
+/root/substrate/herryskitties/target/release/wbuild-runner/herryskitties-runtime/target/release/wasm-build-runner-impl: /root/substrate/herryskitties/target/release/wbuild-runner/herryskitties-runtime/src/main.rs

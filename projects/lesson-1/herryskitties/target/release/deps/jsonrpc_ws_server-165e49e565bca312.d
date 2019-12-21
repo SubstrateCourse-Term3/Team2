@@ -1,0 +1,12 @@
+/root/substrate/herryskitties/target/release/deps/jsonrpc_ws_server-165e49e565bca312.rmeta: /root/.cargo/registry/src/github.com-1ecc6299db9ec823/jsonrpc-ws-server-13.1.0/src/lib.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/jsonrpc-ws-server-13.1.0/src/error.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/jsonrpc-ws-server-13.1.0/src/metadata.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/jsonrpc-ws-server-13.1.0/src/server.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/jsonrpc-ws-server-13.1.0/src/server_builder.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/jsonrpc-ws-server-13.1.0/src/session.rs
+
+/root/substrate/herryskitties/target/release/deps/libjsonrpc_ws_server-165e49e565bca312.rlib: /root/.cargo/registry/src/github.com-1ecc6299db9ec823/jsonrpc-ws-server-13.1.0/src/lib.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/jsonrpc-ws-server-13.1.0/src/error.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/jsonrpc-ws-server-13.1.0/src/metadata.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/jsonrpc-ws-server-13.1.0/src/server.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/jsonrpc-ws-server-13.1.0/src/server_builder.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/jsonrpc-ws-server-13.1.0/src/session.rs
+
+/root/substrate/herryskitties/target/release/deps/jsonrpc_ws_server-165e49e565bca312.d: /root/.cargo/registry/src/github.com-1ecc6299db9ec823/jsonrpc-ws-server-13.1.0/src/lib.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/jsonrpc-ws-server-13.1.0/src/error.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/jsonrpc-ws-server-13.1.0/src/metadata.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/jsonrpc-ws-server-13.1.0/src/server.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/jsonrpc-ws-server-13.1.0/src/server_builder.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/jsonrpc-ws-server-13.1.0/src/session.rs
+
+/root/.cargo/registry/src/github.com-1ecc6299db9ec823/jsonrpc-ws-server-13.1.0/src/lib.rs:
+/root/.cargo/registry/src/github.com-1ecc6299db9ec823/jsonrpc-ws-server-13.1.0/src/error.rs:
+/root/.cargo/registry/src/github.com-1ecc6299db9ec823/jsonrpc-ws-server-13.1.0/src/metadata.rs:
+/root/.cargo/registry/src/github.com-1ecc6299db9ec823/jsonrpc-ws-server-13.1.0/src/server.rs:
+/root/.cargo/registry/src/github.com-1ecc6299db9ec823/jsonrpc-ws-server-13.1.0/src/server_builder.rs:
+/root/.cargo/registry/src/github.com-1ecc6299db9ec823/jsonrpc-ws-server-13.1.0/src/session.rs:

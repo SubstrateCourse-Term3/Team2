@@ -1,0 +1,1 @@
+/root/substrate/herryskitties/target/release/wbuild/target/wasm32-unknown-unknown/release/herryskitties_runtime.wasm: /root/substrate/herryskitties/runtime/build.rs /root/substrate/herryskitties/runtime/src/lib.rs /root/substrate/herryskitties/runtime/src/template.rs /root/substrate/herryskitties/target/release/wbuild/herryskitties-runtime/src/lib.rs

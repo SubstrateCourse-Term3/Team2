@@ -1,0 +1,1 @@
+{"rustc":13568843128949978479,"features":"","target":0,"profile":0,"path":0,"deps":[[13276218065387473239,"build_script_build",false,4546113430026164686]],"local":[{"RerunIfChanged":{"output":"release/build/libz-sys-c306f3f1da610bc8/output","paths":["build.rs"]}},{"RerunIfEnvChanged":{"var":"LIBZ_SYS_STATIC","val":null}}],"rustflags":[],"metadata":0}

@@ -1,0 +1,10 @@
+/root/substrate/herryskitties/target/release/deps/jsonrpc_client_transports-552ae6bcb7b8cd48.rmeta: /root/.cargo/registry/src/github.com-1ecc6299db9ec823/jsonrpc-client-transports-13.1.0/src/lib.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/jsonrpc-client-transports-13.1.0/src/transports/mod.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/jsonrpc-client-transports-13.1.0/src/transports/duplex.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/jsonrpc-client-transports-13.1.0/src/transports/local.rs
+
+/root/substrate/herryskitties/target/release/deps/libjsonrpc_client_transports-552ae6bcb7b8cd48.rlib: /root/.cargo/registry/src/github.com-1ecc6299db9ec823/jsonrpc-client-transports-13.1.0/src/lib.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/jsonrpc-client-transports-13.1.0/src/transports/mod.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/jsonrpc-client-transports-13.1.0/src/transports/duplex.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/jsonrpc-client-transports-13.1.0/src/transports/local.rs
+
+/root/substrate/herryskitties/target/release/deps/jsonrpc_client_transports-552ae6bcb7b8cd48.d: /root/.cargo/registry/src/github.com-1ecc6299db9ec823/jsonrpc-client-transports-13.1.0/src/lib.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/jsonrpc-client-transports-13.1.0/src/transports/mod.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/jsonrpc-client-transports-13.1.0/src/transports/duplex.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/jsonrpc-client-transports-13.1.0/src/transports/local.rs
+
+/root/.cargo/registry/src/github.com-1ecc6299db9ec823/jsonrpc-client-transports-13.1.0/src/lib.rs:
+/root/.cargo/registry/src/github.com-1ecc6299db9ec823/jsonrpc-client-transports-13.1.0/src/transports/mod.rs:
+/root/.cargo/registry/src/github.com-1ecc6299db9ec823/jsonrpc-client-transports-13.1.0/src/transports/duplex.rs:
+/root/.cargo/registry/src/github.com-1ecc6299db9ec823/jsonrpc-client-transports-13.1.0/src/transports/local.rs:

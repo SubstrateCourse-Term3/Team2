@@ -1,0 +1,13 @@
+/root/substrate/herryskitties/target/release/deps/erased_serde-3c810f5bd72bab73.rmeta: /root/.cargo/registry/src/github.com-1ecc6299db9ec823/erased-serde-0.3.9/src/lib.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/erased-serde-0.3.9/src/macros.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/erased-serde-0.3.9/src/any.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/erased-serde-0.3.9/src/de.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/erased-serde-0.3.9/src/error.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/erased-serde-0.3.9/src/ser.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/erased-serde-0.3.9/src/private.rs
+
+/root/substrate/herryskitties/target/release/deps/liberased_serde-3c810f5bd72bab73.rlib: /root/.cargo/registry/src/github.com-1ecc6299db9ec823/erased-serde-0.3.9/src/lib.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/erased-serde-0.3.9/src/macros.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/erased-serde-0.3.9/src/any.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/erased-serde-0.3.9/src/de.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/erased-serde-0.3.9/src/error.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/erased-serde-0.3.9/src/ser.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/erased-serde-0.3.9/src/private.rs
+
+/root/substrate/herryskitties/target/release/deps/erased_serde-3c810f5bd72bab73.d: /root/.cargo/registry/src/github.com-1ecc6299db9ec823/erased-serde-0.3.9/src/lib.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/erased-serde-0.3.9/src/macros.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/erased-serde-0.3.9/src/any.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/erased-serde-0.3.9/src/de.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/erased-serde-0.3.9/src/error.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/erased-serde-0.3.9/src/ser.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/erased-serde-0.3.9/src/private.rs
+
+/root/.cargo/registry/src/github.com-1ecc6299db9ec823/erased-serde-0.3.9/src/lib.rs:
+/root/.cargo/registry/src/github.com-1ecc6299db9ec823/erased-serde-0.3.9/src/macros.rs:
+/root/.cargo/registry/src/github.com-1ecc6299db9ec823/erased-serde-0.3.9/src/any.rs:
+/root/.cargo/registry/src/github.com-1ecc6299db9ec823/erased-serde-0.3.9/src/de.rs:
+/root/.cargo/registry/src/github.com-1ecc6299db9ec823/erased-serde-0.3.9/src/error.rs:
+/root/.cargo/registry/src/github.com-1ecc6299db9ec823/erased-serde-0.3.9/src/ser.rs:
+/root/.cargo/registry/src/github.com-1ecc6299db9ec823/erased-serde-0.3.9/src/private.rs:

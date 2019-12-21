@@ -1,0 +1,1 @@
+{"rustc":13568843128949978479,"features":"[]","target":6059209212948207706,"profile":2574335274271406459,"path":12440780866794505910,"deps":[[3275788591852735647,"scopeguard",false,8759440420322446889]],"local":[{"CheckDepInfo":{"dep_info":"release/.fingerprint/lock_api-606b6eac909b2c11/dep-lib-lock_api-606b6eac909b2c11"}}],"rustflags":[],"metadata":1004704486619092063}

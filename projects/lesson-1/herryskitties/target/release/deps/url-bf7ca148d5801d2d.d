@@ -1,0 +1,15 @@
+/root/substrate/herryskitties/target/release/deps/url-bf7ca148d5801d2d.rmeta: /root/.cargo/registry/src/github.com-1ecc6299db9ec823/url-2.1.0/src/lib.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/url-2.1.0/src/host.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/url-2.1.0/src/origin.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/url-2.1.0/src/parser.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/url-2.1.0/src/path_segments.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/url-2.1.0/src/query_encoding.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/url-2.1.0/src/slicing.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/url-2.1.0/src/form_urlencoded.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/url-2.1.0/src/quirks.rs
+
+/root/substrate/herryskitties/target/release/deps/liburl-bf7ca148d5801d2d.rlib: /root/.cargo/registry/src/github.com-1ecc6299db9ec823/url-2.1.0/src/lib.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/url-2.1.0/src/host.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/url-2.1.0/src/origin.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/url-2.1.0/src/parser.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/url-2.1.0/src/path_segments.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/url-2.1.0/src/query_encoding.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/url-2.1.0/src/slicing.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/url-2.1.0/src/form_urlencoded.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/url-2.1.0/src/quirks.rs
+
+/root/substrate/herryskitties/target/release/deps/url-bf7ca148d5801d2d.d: /root/.cargo/registry/src/github.com-1ecc6299db9ec823/url-2.1.0/src/lib.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/url-2.1.0/src/host.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/url-2.1.0/src/origin.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/url-2.1.0/src/parser.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/url-2.1.0/src/path_segments.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/url-2.1.0/src/query_encoding.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/url-2.1.0/src/slicing.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/url-2.1.0/src/form_urlencoded.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/url-2.1.0/src/quirks.rs
+
+/root/.cargo/registry/src/github.com-1ecc6299db9ec823/url-2.1.0/src/lib.rs:
+/root/.cargo/registry/src/github.com-1ecc6299db9ec823/url-2.1.0/src/host.rs:
+/root/.cargo/registry/src/github.com-1ecc6299db9ec823/url-2.1.0/src/origin.rs:
+/root/.cargo/registry/src/github.com-1ecc6299db9ec823/url-2.1.0/src/parser.rs:
+/root/.cargo/registry/src/github.com-1ecc6299db9ec823/url-2.1.0/src/path_segments.rs:
+/root/.cargo/registry/src/github.com-1ecc6299db9ec823/url-2.1.0/src/query_encoding.rs:
+/root/.cargo/registry/src/github.com-1ecc6299db9ec823/url-2.1.0/src/slicing.rs:
+/root/.cargo/registry/src/github.com-1ecc6299db9ec823/url-2.1.0/src/form_urlencoded.rs:
+/root/.cargo/registry/src/github.com-1ecc6299db9ec823/url-2.1.0/src/quirks.rs:
