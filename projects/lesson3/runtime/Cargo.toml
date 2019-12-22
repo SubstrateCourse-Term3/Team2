@@ -189,3 +189,6 @@ git = 'https://github.com/paritytech/substrate.git'
 package = 'substrate-wasm-builder-runner'
 rev = '665304397ff7e60d7cda177a0623a571e5909a2c'
 version = '1.0.4'
+
+[dependencies]
+log = '0.4.8'

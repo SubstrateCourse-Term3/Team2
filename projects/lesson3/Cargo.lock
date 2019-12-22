@@ -4668,6 +4668,7 @@ dependencies = [
  "frame-executive 2.0.0 (git+https://github.com/paritytech/substrate.git?rev=665304397ff7e60d7cda177a0623a571e5909a2c)",
  "frame-support 2.0.0 (git+https://github.com/paritytech/substrate.git?rev=665304397ff7e60d7cda177a0623a571e5909a2c)",
  "frame-system 2.0.0 (git+https://github.com/paritytech/substrate.git?rev=665304397ff7e60d7cda177a0623a571e5909a2c)",
+ "log 0.4.8 (registry+https://github.com/rust-lang/crates.io-index)",
  "pallet-aura 2.0.0 (git+https://github.com/paritytech/substrate.git?rev=665304397ff7e60d7cda177a0623a571e5909a2c)",
  "pallet-balances 2.0.0 (git+https://github.com/paritytech/substrate.git?rev=665304397ff7e60d7cda177a0623a571e5909a2c)",
  "pallet-grandpa 2.0.0 (git+https://github.com/paritytech/substrate.git?rev=665304397ff7e60d7cda177a0623a571e5909a2c)",
