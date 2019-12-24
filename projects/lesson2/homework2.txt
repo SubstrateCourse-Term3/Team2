@@ -1,0 +1,58 @@
+struct cat{  //猫的数据结构
+   cat_id://猫的ID   cat_owner_id://猫的所有者ID   cat_dna://猫的DNA   cat_birth_timestamp://猫的生成时间   owner_prev_cat_id://同一个所有者上一只猫的id   owner_next_cat_id://同一个所有者下一只猫的id
+   cat_instance_address://猫的实例地址
+}
+
+cat[] all_cats; //记录所有的猫的数组
+
+function get_all_cats(){ //返回记录了所有猫数组的方法
+    return all_cats;
+}
+
+
+---------------------------------------------------------------------------------------------
+
+struct owner_link{//用户及所拥有猫的关系的数据结构
+    cat_owrner_id://猫的所有者id
+    owned_cat_number://这个所有者拥有的猫数量
+    first_owned_cat_id://这个所有者拥用的第一只猫的id
+}
+owner_link[] owners; //记录所有猫拥有者及猫的关系的数组
+
+function get_owners(){ //获取猫拥有者及猫关系数组的方法
+    return owners;
+}
+
+---------------------------------------------------------------------------------------------
+
+function traverse_all_cats(){//用遍历数组的方式，遍历所有的猫
+    cats[] = get_all_cats(); //获取猫的数组
+    for(i=0; i<len(cats); i++){
+        c_id = cat[i].cat_id;        c_ower = cat[i].cat_owner_id;        c_dna  = cat[i].cat_dna;        c_birthday_timestamp = cat[i].cat_birth_timestamp;        c_instance_address =  cat[i].cat_instance_address;
+    }
+
+function traverse_owner_cats(cat_owner_id){ //遍历某一猫拥有者所拥有的所有猫
+    cat_owners[] = get_owners(); //获取猫拥有者及猫关系的数组
+    for(i=0; i<len(cat_owners); i++){    //获取这个所有者第一只猫的ID
+            if(cat_owners[i].cat_owrner_id == cat_owner_id){  //找到了这个猫拥有者
+                    owner_first_cat_id = cat_owners[i].first_owned_cat_id;  //记录这个猫拥有者第一只猫的id                    cat_num= cat_owners[i].owned_cat_number;  //记录这个拥有者一共有几只猫
+                    break;
+            }
+    }
+    cats[] = get_all_cats();  //获取猫的数组
+    next_cat = owner_first_cat_id;  //把第一只猫的id赋值
+    for(k=0; k< cat_num; k++){  //遍历该猫拥有者的每一只猫，一共是cat_num这么多只
+        for (j=0;j <len(cats); j++){
+            if(cats[i].cat_id==next_cat){  //找到每一只猫数据里记录的下一只一样所有者的猫的id
+                next_cat = cats[i].owner_next_cat_id;     break;
+            }
+        }
+    }
+
+------------------------------------------------------------------------------------------------------------
+
+#  生成dna (伪代码算法）
+function creatDNA(cat_owner_id,current_timestamp){ //用MD5的哈希算法生成一个基于猫所有者ID及时间戳的独有DNA
+    dna = MD5(cat_owner_id,current_timestamp);
+    return dna;
+  }
