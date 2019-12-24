@@ -1,2 +1,0 @@
-cargo:rustc-env=TYPENUM_BUILD_OP=/root/substrate/herryskitties/target/release/build/typenum-79cd1b11f4f248cb/out/consts.rs
-cargo:rustc-env=TYPENUM_BUILD_CONSTS=/root/substrate/herryskitties/target/release/build/typenum-79cd1b11f4f248cb/out/op.rs

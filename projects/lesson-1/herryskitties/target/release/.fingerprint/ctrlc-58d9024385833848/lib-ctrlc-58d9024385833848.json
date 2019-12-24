@@ -1,1 +1,0 @@
-{"rustc":13568843128949978479,"features":"[\"termination\"]","target":17387603255504639972,"profile":2574335274271406459,"path":3969960203889393893,"deps":[[5741240788155980631,"nix",false,7199466698992462746]],"local":[{"CheckDepInfo":{"dep_info":"release/.fingerprint/ctrlc-58d9024385833848/dep-lib-ctrlc-58d9024385833848"}}],"rustflags":[],"metadata":14328005900965106661}
