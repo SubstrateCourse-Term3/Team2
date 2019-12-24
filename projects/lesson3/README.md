@@ -1,76 +1,53 @@
-# Substrate Node Template
+# 第三课作业
+```text
+设计加密猫模块 V2
+需求
+1. 繁殖小猫
+2. 选择两只现有的猫作为父母
+3. 小猫必须继承父母的基因
+4. 同样的父母生出来的小猫不能相同
 
-A new SRML-based Substrate node, ready for hacking.
+create 这里面的kitties_count有溢出的可能性，修复这个问题
 
-## Build
+# 内容
+```text
+//修复kitties_count有溢出的可能性
+ let kitties_count = Self::kitties_count();
 
-Install Rust:
+            let new_all_kitties_count = kitties_count.checked_add(1)
+                .ok_or("Overflow adding a new kitty to total supply")?;
 
-```bash
-curl https://sh.rustup.rs -sSf | sh
-```
+breeded_kittyDna :[u8;16]
+fn DnaMerge(new_kittyA, new_kittyB) -> new_kitty {
+	if new_kittyA前3个元素的值都是高于100{
+		clone new_kittyA前3个元素
+	} else{
+		clone new_kittyB前3个元素
+		}
+ 其余13个元素AB随机交换
+             [a,b]=shuffle([a,b])
 
-Initialize your Wasm Build environment:
+   }
 
-```bash
-./scripts/init.sh
-```
+  BreedKitty(sender, a:KittyIndex, b:KittyIndex){
+    check_kitty_exit(a)//确保猫的存在 
+    check_kitty_exit(b)//确保猫的存在 
+    check_owner(sender,a,b);//确保a,b的主人是sender 
+    check_kitties_count_overflow();//确保不会溢出
 
-Build Wasm and native code:
+    // 生成随机dna
+    let payload: (T::Hash, T::AccountId, Option<u32>, T::BlockNumber) = (
+        <randomness_collective_flip::Module<T> as Randomness<T::Hash>>::random_seed(),
+        sender,
+        <system::Module<T>>::extrinsic_index(),
+        <system::Module<T>>::block_number(),
+    );
+    let dna: [u8; 16] = payload.using_encoded(blake2_128);
 
-```bash
-cargo build --release
-```
-
-## Run
-
-### Single node development chain
-
-Purge any existing developer chain state:
-
-```bash
-./target/release/substrate-kitties purge-chain --dev
-```
-
-Start a development chain with:
-
-```bash
-./target/release/substrate-kitties --dev
-```
-
-Detailed logs may be shown by running the node with the following environment variables set: `RUST_LOG=debug RUST_BACKTRACE=1 cargo run -- --dev`.
-
-### Multi-node local testnet
-
-If you want to see the multi-node consensus algorithm in action locally, then you can create a local testnet with two validator nodes for Alice and Bob, who are the initial authorities of the genesis chain that have been endowed with testnet units.
-
-Optionally, give each node a name and expose them so they are listed on the Polkadot [telemetry site](https://telemetry.polkadot.io/#/Local%20Testnet).
-
-You'll need two terminal windows open.
-
-We'll start Alice's substrate node first on default TCP port 30333 with her chain database stored locally at `/tmp/alice`. The bootnode ID of her node is `QmRpheLN4JWdAnY7HGJfWFNbfkQCb6tFf4vvA6hgjMZKrR`, which is generated from the `--node-key` value that we specify below:
-
-```bash
-cargo run -- \
-  --base-path /tmp/alice \
-  --chain=local \
-  --alice \
-  --node-key 0000000000000000000000000000000000000000000000000000000000000001 \
-  --telemetry-url ws://telemetry.polkadot.io:1024 \
-  --validator
-```
-
-In the second terminal, we'll start Bob's substrate node on a different TCP port of 30334, and with his chain database stored locally at `/tmp/bob`. We'll specify a value for the `--bootnodes` option that will connect his node to Alice's bootnode ID on TCP port 30333:
-
-```bash
-cargo run -- \
-  --base-path /tmp/bob \
-  --bootnodes /ip4/127.0.0.1/tcp/30333/p2p/QmRpheLN4JWdAnY7HGJfWFNbfkQCb6tFf4vvA6hgjMZKrR \
-  --chain=local \
-  --bob \
-  --port 30334 \
-  --telemetry-url ws://telemetry.polkadot.io:1024 \
-  --validator
-```
-
-Additional CLI usage options are available and may be shown by running `cargo run -- --help`.
+    
+    let (a,b) = (Store_KittyMap::get(a),Store_KittyMap::get(b));//读取父母
+    let newDNA = KittyDNA::DNAMerge(a.DNA, b.DNA, dna);//创建新DNA
+    let newId = KittyIndex::nextID(Store_KittyCount)//创建新ID
+    let newKitty = Kitty {DNA: newDNA, OwnerID:sender};//生成实体
+    Store_KittyMap::put(newId,newKitty);//保存实体
+    Store_KittyCount::inc();//递增全局计数器
