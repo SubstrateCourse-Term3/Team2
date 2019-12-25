@@ -31,6 +31,10 @@ decl_module! {
 			let dna = payload.using_encoded(blake2_128);
 			let kitty = Kitty(dna);
 			let count = Self::kitties_count();
+			// check overflow
+			if count == u32::max_value() {
+				return Err("Kitties count overflow");
+			}
 			Kitties::insert(count, kitty);
 			KittiesCount::put(count + 1);
 		}
