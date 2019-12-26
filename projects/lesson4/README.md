@@ -1,76 +1,50 @@
-# Substrate Node Template
+# 第四课
+    1. Substrate Kitties V2 实现
+    2. 链上升级
+    3. pallet-sudo 代码分析
+    4. pallet-member 与 pallet-collective 
+    
+# 第四课作业
 
-A new SRML-based Substrate node, ready for hacking.
+## 设计加密猫模块V3
+* 转移猫, 复杂度必须优于 O(n)
 
-## Build
+### V3 设计
 
-Install Rust:
+#### 方案1 使用数组 O(1)
+```text
+pub OwnedKitties get(fn owned_kitties): map (T::AccountId, T::KittyIndex) => T::KittyIndex;
+pub OwnedKittiesCount get(fn owned_kitties_count): map T::AccountId => T::KittyIndex;
 
-```bash
-curl https://sh.rustup.rs -sSf | sh
+为了让转让猫操作复杂度为O(1)
+假设一种情况, 数组元素为5个. [1,2,3,4,5]
+现在要删除元素2. 那么可以让OwnedKittiesCount=4, 并且OwnedKitties=[1,5,3,4]. 把最后一个元素覆盖要删除的元素.
+
+这种方法效率高, 缺点是顺序打乱.
 ```
+		
+#### 方案2 双向链表O(1), 其实数组的方法更好, 但是为了练习Rust, 所以实现了这个方案
+* 存储所有的猫用的map: 全局猫ID=>猫
+* 存储个人的猫用的map: (用户ID, 全局猫ID) => KittyListItem{next:全局猫ID, prev:全局猫ID}
+* 以上2个定义, 相当于每个用户都有一个链表, 在所有的猫的map上'链'出自己的猫集合.
+* 转移猫的时候, 只需要修改个人的猫的链表即可. 
+* 链表定义: runtime/src/kitties.rs:24
+* 链表测试: runtime/src/kitties.rs:424
+* 转猫测试: runtime/src/kitties.rs:494
 
-Initialize your Wasm Build environment:
+## 完成 `combine_dna`
+* 实现: runtime/src/kitties.rs:177
+* 测试: runtime/src/kitties.rs:374
 
-```bash
-./scripts/init.sh
-```
+## 重构 `create` 使用新的帮助函数
+* 实现: runtime/src/kitties.rs:196
+* 测试: runtime/src/kitties.rs:353
 
-Build Wasm and native code:
+# 额外作业
+## 创建新的 polkadot apps 项目
+## 创建树形存储
+既然上面基于KV存储设计了链表, 那么照猫画虎即可设计二叉树.
 
-```bash
-cargo build --release
-```
 
-## Run
 
-### Single node development chain
 
-Purge any existing developer chain state:
-
-```bash
-./target/release/substrate-kitties purge-chain --dev
-```
-
-Start a development chain with:
-
-```bash
-./target/release/substrate-kitties --dev
-```
-
-Detailed logs may be shown by running the node with the following environment variables set: `RUST_LOG=debug RUST_BACKTRACE=1 cargo run -- --dev`.
-
-### Multi-node local testnet
-
-If you want to see the multi-node consensus algorithm in action locally, then you can create a local testnet with two validator nodes for Alice and Bob, who are the initial authorities of the genesis chain that have been endowed with testnet units.
-
-Optionally, give each node a name and expose them so they are listed on the Polkadot [telemetry site](https://telemetry.polkadot.io/#/Local%20Testnet).
-
-You'll need two terminal windows open.
-
-We'll start Alice's substrate node first on default TCP port 30333 with her chain database stored locally at `/tmp/alice`. The bootnode ID of her node is `QmRpheLN4JWdAnY7HGJfWFNbfkQCb6tFf4vvA6hgjMZKrR`, which is generated from the `--node-key` value that we specify below:
-
-```bash
-cargo run -- \
-  --base-path /tmp/alice \
-  --chain=local \
-  --alice \
-  --node-key 0000000000000000000000000000000000000000000000000000000000000001 \
-  --telemetry-url ws://telemetry.polkadot.io:1024 \
-  --validator
-```
-
-In the second terminal, we'll start Bob's substrate node on a different TCP port of 30334, and with his chain database stored locally at `/tmp/bob`. We'll specify a value for the `--bootnodes` option that will connect his node to Alice's bootnode ID on TCP port 30333:
-
-```bash
-cargo run -- \
-  --base-path /tmp/bob \
-  --bootnodes /ip4/127.0.0.1/tcp/30333/p2p/QmRpheLN4JWdAnY7HGJfWFNbfkQCb6tFf4vvA6hgjMZKrR \
-  --chain=local \
-  --bob \
-  --port 30334 \
-  --telemetry-url ws://telemetry.polkadot.io:1024 \
-  --validator
-```
-
-Additional CLI usage options are available and may be shown by running `cargo run -- --help`.
