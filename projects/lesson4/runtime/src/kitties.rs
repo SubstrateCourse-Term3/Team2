@@ -5,6 +5,7 @@ use runtime_io::hashing::blake2_128;
 use system::ensure_signed;
 use rstd::result;
 
+
 pub trait Trait: system::Trait {
 	type KittyIndex: Parameter + SimpleArithmetic + Bounded + Default + Copy;
 }
@@ -35,7 +36,7 @@ decl_module! {
 
 			// 作业：重构create方法，避免重复代码
 			Self::next_kitty_id();	
-			Self::random_value(sender)?
+			Self::random_value(&sender);
 			Self::insert_kitty(owner, kitty_id, kitty);
 		}
 
@@ -52,7 +53,7 @@ fn combine_dna(dna1: u8, dna2: u8, selector: u8) -> u8 {
 	// 作业：实现combine_dna
 	// 伪代码：
 	/*let mut new_dna = Vec::new();
-	for (index, bit) in selector.enumerate() {
+	for (index, bit) in selector.iter().enumerate() {
 		if bit == 1 {
 			new_dna.push(dna1[index]);
 		} else {
@@ -60,7 +61,7 @@ fn combine_dna(dna1: u8, dna2: u8, selector: u8) -> u8 {
 		}
 	}
 	let mut returnvalue:u8 = 0；
-	for(index, bit) in new_dna.enumerate() {
+	for(index, bit) in new_dna.iter().enumerate() {
  		returnvalue = returnvalue*2 + bit;
 	}
 	return returnvalue；
@@ -68,9 +69,9 @@ fn combine_dna(dna1: u8, dna2: u8, selector: u8) -> u8 {
 	// selector.map_bits(|bit, index| if (bit == 1) { dna1 & (1 << index) } else { dna2 & (1 << index) })
 	// 注意 map_bits这个方法不存在。只要能达到同样效果，不局限算法
 	// 测试数据：dna1 = 0b11110000, dna2 = 0b11001100, selector = 0b10101010, 返回值 0b11100100
-	let mut returnvalue:u8 = 0
-	let mut tmp:u8 = 0
-	for(index, bit) in selector.enumerate() {
+	let mut returnvalue:u8 = 0;
+	let mut tmp:u8 = 0;
+	for(index, bit) in selector.iter().enumerate() {
  		if bit == 1 {
   			tmp = dna1[index];
  		} else {
@@ -80,6 +81,7 @@ fn combine_dna(dna1: u8, dna2: u8, selector: u8) -> u8 {
 	}
 	return returnvalue;
 }
+
 
 impl<T: Trait> Module<T> {
 	// Generate a random 128bit value
