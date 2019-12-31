@@ -1,0 +1,29 @@
+猫V3数据结构重新设计：
+
+1. 建一个 Owner_firstCatAdd 的一个map,里边存储每一个用户的第一只猫地址,key是用户ID，value是第一只猫的链表节点地址
+
+pub Owner_firstCatAddress get(fn owned_firstCat): map T::AccountId => T::&Kitty
+
+
+2. 对每一个用户，创建一个链表，第一个node为该用户的第一只猫
+
+struct mut cat_link_node{
+
+    let kitty_id: u32; //这只猫的全局ID
+    let mut user_next_kitty_address: &Kitty; //这是该用户下一只猫的链表节点
+
+}
+
+
+3. 依然保留原设计OwnedKittiesCount，用来记录每个用户拥有猫的总数。
+	pub OwnedKittiesCount get(fn owned_kitties_count): map T::AccountId => T::KittyIndex;
+
+
+
+如果要转移猫，则遵从下面步骤：
+1.从原主人链表中找到这只猫，取出它的猫链节点，并把这只猫前面一只的user_next_kitty_address，改成它后面一只猫的地址。同时老主人的OwnedKittiesCount减1.
+  复杂度不大于该owner所拥有的猫数量
+2. 新转入的猫，作为新主人猫链表的第一只猫。只须把新主人Owner_firstCatAdd的地址改成这个猫链节点地址，它自己节点的user_next_kitty_address
+  改成新主人原来第一只猫的猫链节点地址即可，同时新主人的OwnedKittiesCount加1。复杂度为O(1)
+
+  终上所述，总运算复杂度不会超过O(n)
