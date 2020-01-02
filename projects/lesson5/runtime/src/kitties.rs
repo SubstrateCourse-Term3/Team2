@@ -80,9 +80,9 @@ decl_module! {
             Self::delete_price_kitty(sender, index, kitty_index)?;
         }
 
-        pub fn buy(origin, index: T::KittyIndex) {
+        pub fn buy(origin, arr_index: T::KittyIndex, kitty_index: T::KittyIndex) {
             let sender = ensure_signed(origin)?;
-            Self::buy_kitty(sender, index)?;
+            Self::buy_kitty(sender, arr_index, kitty_index)?;
         }
     }
 }
@@ -194,7 +194,7 @@ impl<T: Trait> Module<T> {
         Ok(())
     }
 
-    fn buy_kitty(sender: T::AccountId, arr_index: T::KittyIndex) -> dispatch::Result {
+    fn buy_kitty(sender: T::AccountId, arr_index: T::KittyIndex, kitty_index: T::KittyIndex) -> dispatch::Result {
         let len = Self::prices_count();
         ensure!(len > arr_index.clone(), "invalid index");
         let p = Self::prices(arr_index.clone());
@@ -202,6 +202,9 @@ impl<T: Trait> Module<T> {
         let owner = p.0.clone();
         let kitty_id = p.1.clone();
         let price = p.2.clone();
+
+        // 猫已经被抢走
+        ensure!(kitty_index == kitty_id,"kitty is not for selling");
 
         // 挂单的人都已经不拥有这只猫了, 直接删除价格即可
         if !<OwnedKitties<T>>::exists((owner.clone(), Some(kitty_id.clone()))) {
@@ -389,7 +392,7 @@ mod tests {
             assert_eq!(p.1, 0);
             assert_eq!(p.2, 1000);
 
-            assert_ok!(<Module<Test>>::buy_kitty(2, 0));
+            assert_ok!(<Module<Test>>::buy_kitty(2, 0, 0));
             assert_eq!(KittiesTest::prices_count(), 0);
         });
     }
