@@ -1,76 +1,30 @@
-# Substrate Node Template
-
-A new SRML-based Substrate node, ready for hacking.
-
-## Build
-
-Install Rust:
-
-```bash
-curl https://sh.rustup.rs -sSf | sh
+# 第五课作业
+```text
+1. 设计加密猫模块V4
+   需求：
+   1）交易所
+   2）给自己的小猫设定价钱
+   3） 购买其他人的小猫
+2. 完成 `transfer`
+3. 完成 `insert_owned_kitty`
 ```
 
-Initialize your Wasm Build environment:
+# 内容
+```text
 
-```bash
-./scripts/init.sh
+  set_price(kitty_id, new_price)  {
+      check_kitty_exit(kitty_id)//确保猫的存在 
+      check_owner(sender,kitty_id);//确保主人是sender 
+      kitty_price(new_price);//设价
+  }
+
+  buy_kitty( kitty_id, max_price:)  {
+      check_kitty_exit(kitty_id)//确保猫的存在 
+      check_owner(sender,kitty_id);//确保主人是sender 
+      ensure!(owner != sender)
+      check_if_kitty_for_sale(kitty_price)；猫的价格不是零
+      check_enough_money(kitty_price);猫的价格不大于你的blance
+      transfer(to, kitty_id);
+  }
+        
 ```
-
-Build Wasm and native code:
-
-```bash
-cargo build --release
-```
-
-## Run
-
-### Single node development chain
-
-Purge any existing developer chain state:
-
-```bash
-./target/release/substrate-kitties purge-chain --dev
-```
-
-Start a development chain with:
-
-```bash
-./target/release/substrate-kitties --dev
-```
-
-Detailed logs may be shown by running the node with the following environment variables set: `RUST_LOG=debug RUST_BACKTRACE=1 cargo run -- --dev`.
-
-### Multi-node local testnet
-
-If you want to see the multi-node consensus algorithm in action locally, then you can create a local testnet with two validator nodes for Alice and Bob, who are the initial authorities of the genesis chain that have been endowed with testnet units.
-
-Optionally, give each node a name and expose them so they are listed on the Polkadot [telemetry site](https://telemetry.polkadot.io/#/Local%20Testnet).
-
-You'll need two terminal windows open.
-
-We'll start Alice's substrate node first on default TCP port 30333 with her chain database stored locally at `/tmp/alice`. The bootnode ID of her node is `QmRpheLN4JWdAnY7HGJfWFNbfkQCb6tFf4vvA6hgjMZKrR`, which is generated from the `--node-key` value that we specify below:
-
-```bash
-cargo run -- \
-  --base-path /tmp/alice \
-  --chain=local \
-  --alice \
-  --node-key 0000000000000000000000000000000000000000000000000000000000000001 \
-  --telemetry-url ws://telemetry.polkadot.io:1024 \
-  --validator
-```
-
-In the second terminal, we'll start Bob's substrate node on a different TCP port of 30334, and with his chain database stored locally at `/tmp/bob`. We'll specify a value for the `--bootnodes` option that will connect his node to Alice's bootnode ID on TCP port 30333:
-
-```bash
-cargo run -- \
-  --base-path /tmp/bob \
-  --bootnodes /ip4/127.0.0.1/tcp/30333/p2p/QmRpheLN4JWdAnY7HGJfWFNbfkQCb6tFf4vvA6hgjMZKrR \
-  --chain=local \
-  --bob \
-  --port 30334 \
-  --telemetry-url ws://telemetry.polkadot.io:1024 \
-  --validator
-```
-
-Additional CLI usage options are available and may be shown by running `cargo run -- --help`.

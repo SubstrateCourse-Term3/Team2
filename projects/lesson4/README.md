@@ -12,7 +12,7 @@
 ```text
 fn transfer(to, kitty_id) {
   check_owner(sender,a);//确保a的主人是sender 
-  ensure!(owner == sender；
+  ensure!(owner == sender)；
   checked_add(owned_kitty_count_to)；
   checked_sub(owned_kitty_count_from)；
             

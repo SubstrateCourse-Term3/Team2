@@ -27,6 +27,8 @@ decl_storage! {
 		pub KittiesCount get(fn kitties_count): T::KittyIndex;
 
 		pub OwnedKitties get(fn owned_kitties): map (T::AccountId, Option<T::KittyIndex>) => Option<KittyLinkedItem<T>>;
+
+		pub KittyOwner get(owner_of): map T::Hash => Option<T::AccountId>;
 	}
 }
 
@@ -35,7 +37,7 @@ decl_module! {
 		/// Create a new kitty
 		pub fn create(origin) {
 			let sender = ensure_signed(origin)?;
-			let kitty_id = Self::next_kitty_id()?;
+			let kitty_id = Self::()?;
 
 			// Generate a random 128bit value
 			let dna = Self::random_value(&sender);
@@ -55,6 +57,19 @@ decl_module! {
 		// 作业：实现 transfer(origin, to: T::AccountId, kitty_id: T::KittyIndex)
 		// 使用 ensure! 来保证只有主人才有权限调用 transfer
 		// 使用 OwnedKitties::append 和 OwnedKitties::remove 来修改小猫的主人
+		fn transfer(origin, to: T::AccountId, kitty_id: T::Hash) -> Result {
+            let sender = ensure_signed(origin)?;
+
+            let owner = Self::owner_of(kitty_id).ok_or("No owner for this kitty")?;
+            ensure!(owner == sender, "You do not own this kitty");
+
+			//Self::transfer_from(sender, to, kitty_id)?;
+			Self::OwnedKitties::append(to, kitty_id);
+			Self::OwnedKitties::remove(sender, kitty_idx);
+
+            Ok(())
+        }
+
 	}
 }
 
@@ -147,6 +162,7 @@ impl<T: Trait> Module<T> {
 
 	fn insert_owned_kitty(owner: &T::AccountId, kitty_id: T::KittyIndex) {
 		// 作业：调用 OwnedKitties::append 完成实现
+		Self::OwnedKitties::append(owner, kitty_id);
   	}
 
 	fn insert_kitty(owner: &T::AccountId, kitty_id: T::KittyIndex, kitty: Kitty) {
