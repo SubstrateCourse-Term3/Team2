@@ -55,6 +55,19 @@ decl_module! {
 		// 作业：实现 transfer(origin, to: T::AccountId, kitty_id: T::KittyIndex)
 		// 使用 ensure! 来保证只有主人才有权限调用 transfer
 		// 使用 OwnedKitties::append 和 OwnedKitties::remove 来修改小猫的主人
+
+		pub fn transfer(origin, to: T::AccountId, kitty_id: T::KittyIndex){
+
+			let from = ensure_signed(origin)?;
+			ensure!(owned_kitties(from, some(kitty_id)).is_some(),"The message sender is not authorized to transfer this kitty.");
+
+			Self::OwnedKitties::remove(&from, kitty_id)
+			Self::OwnedKitties::append(&to, kitty_id)
+
+			}
+
+		}
+
 	}
 }
 
@@ -147,6 +160,11 @@ impl<T: Trait> Module<T> {
 
 	fn insert_owned_kitty(owner: &T::AccountId, kitty_id: T::KittyIndex) {
 		// 作业：调用 OwnedKitties::append 完成实现
+
+		Self::OwnedKitties::append(owner, kitty_id);
+
+
+
   	}
 
 	fn insert_kitty(owner: &T::AccountId, kitty_id: T::KittyIndex, kitty: Kitty) {
