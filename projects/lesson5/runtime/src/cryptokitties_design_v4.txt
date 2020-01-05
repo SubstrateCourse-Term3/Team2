@@ -1,0 +1,46 @@
+设计加密猫模块V4
+
+思路概述：
+1. 设置一个交易队列清单 kitties_selling_list,这是一个map，key值是一个元组(owner_id,kittyIndex)，
+   value值是售价。
+2. 小猫所有者通过set_kitty_price这个函数，可以设置自己猫的售价，这一条信息插入到交易队列清单 kitties_selling_list里边。
+3. 购买者购买小猫时，传入购买价格，match_kitty_transaction这个函数首先处理资金账户交易：buyer资金账户减少相应金额，同时owner账户增加相应金额；然后处理小猫的所有权事项：
+   用现有的OwnedKitties::remove和OwnedKitties::append两个函数实现小猫所有权的转移，也就是这次作业实现
+   的tranfer的功能。完成资金账户和转移权处理之后，把交易清单的这一条小猫出售信息remove掉。
+
+
+交易队清单定义：
+ pub kitties_selling_list get(fn get_listing_kitties): map (T::AccountId, Option<T::KittyIndex>) => Option<T>;
+
+
+ 设置小猫出售价格函数定义：
+ pub fn set_kitty_price(origin: &T::AccountId, kitty_id: T::KittyIndex, selling_price: u32) -> option<T>{
+
+   //查看是否用户签名的交易
+   let sender = ensure_signed(origin)?; 
+
+   //确认消息发送者是否拥有这只小猫
+   ensure!(kitties::owned_kitties(from, some(kitty_id)).is_some(),"The message sender is not authorized to transfer this kitty.");
+
+   //查看此小猫是否已存在交易列表里，如果是，则更新价格，如果不是，则新增一条交易信息
+      Self::kitties_selling_list.insert((sender,KittyIndex),selling_price);
+
+      return ok(());
+
+   }
+
+ 
+匹配交易处理函数定义：
+
+pub fn match_kitty_transaction(from: &T::AccountId, to: &T::AccountId, kitty_id: T::KittyIndex, price_paid: u32) -> Option<T>:{
+
+   //先处理账户相关信息
+   //调用substrate frame里边的balances模块定义的Tranfer Event来处理资金账户的转移
+   balances::transfer(from, to, price_paid);
+
+   //再处理kitty的所有权转移
+   kitties::transfer(from, to, kitty_id)
+
+   //删除交易列表的该条出卖信息
+   kitties_selling_list::take((from, Some(kitty_id)))
+}
