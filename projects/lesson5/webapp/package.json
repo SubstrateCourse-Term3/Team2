@@ -1,0 +1,58 @@
+{
+  "version": "0.39.0-beta.26",
+  "private": true,
+  "engines": {
+    "node": ">=10.13.0",
+    "yarn": "^1.10.1"
+  },
+  "homepage": ".",
+  "workspaces": [
+    "packages/*"
+  ],
+  "resolutions": {
+    "@polkadot/api": "^0.100.0-beta.14",
+    "@polkadot/api-contract": "^0.100.0-beta.14",
+    "@polkadot/keyring": "^1.7.1",
+    "@polkadot/types": "^0.100.0-beta.14",
+    "@polkadot/util": "^1.7.1",
+    "@polkadot/util-crypto": "^1.7.1",
+    "babel-core": "^7.0.0-bridge.0",
+    "typescript": "^3.7.3"
+  },
+  "scripts": {
+    "analyze": "yarn run build && cd packages/apps && yarn run source-map-explorer build/main.*.js",
+    "build": "yarn run build:code && yarn run build:i18n",
+    "build:code": "NODE_ENV=production polkadot-dev-build-ts",
+    "build:i18n": "i18next-scanner --config i18next-scanner.config.js",
+    "docs": "echo \"skipping docs\"",
+    "clean": "polkadot-dev-clean-build",
+    "clean:i18n": "rm -rf packages/apps/public/locales/en && mkdir -p packages/apps/public/locales/en",
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx . && tsc --noEmit --pretty",
+    "postinstall": "polkadot-dev-yarn-only",
+    "test": "echo \"skipping tests\"",
+    "vanitygen": "node packages/app-accounts/scripts/vanitygen.js",
+    "start": "cd packages/apps && webpack --config webpack.config.js"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.7.5",
+    "@babel/register": "^7.7.4",
+    "@babel/runtime": "^7.7.6",
+    "@polkadot/dev-react": "^0.32.13",
+    "@polkadot/ts": "^0.1.88",
+    "autoprefixer": "^9.7.1",
+    "empty": "^0.10.1",
+    "html-loader": "^0.5.5",
+    "i18next-scanner": "^2.10.3",
+    "markdown-loader": "^5.1.0",
+    "postcss": "^7.0.21",
+    "postcss-clean": "^1.1.0",
+    "postcss-flexbugs-fixes": "^4.1.0",
+    "postcss-import": "^12.0.0",
+    "postcss-loader": "^3.0.0",
+    "postcss-nested": "^4.2.1",
+    "postcss-sass": "^0.4.1",
+    "postcss-simple-vars": "^5.0.0",
+    "precss": "^4.0.0",
+    "source-map-explorer": "^2.1.0"
+  }
+}

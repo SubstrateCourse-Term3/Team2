@@ -6,4 +6,5 @@
 **/*.rs.bk
 .idea
 expanded.rs
+node_modules
 
