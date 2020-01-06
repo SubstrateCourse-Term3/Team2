@@ -1,76 +1,60 @@
-# Substrate Node Template
+# 第六课
+    1. 使用 pallet-balances 模块
+    2. Dependency Injection 依赖注入
+    3. Events 事件
+    4. ORML 介绍
+    5. 如何集成 orml-auction
 
-A new SRML-based Substrate node, ready for hacking.
+# 第六课作业
+## 1. 添加 `Ask` 和 `Sold` event
+runtime/src/kitties.rs:113
+runtime/src/kitties.rs:136
 
-## Build
+## 2. 使用 `LinkedList` 重构 OwnedKitties 和 KittyLinkedItem 
+runtime/src/kitties.rs:24
 
-Install Rust:
+### 测试可以通过
+runtime/src/kitties.rs:295
 
-```bash
-curl https://sh.rustup.rs -sSf | sh
+
+# 额外作业
+
+## 1. 利用 polkadot.js 开发一个node.js服务器
+
+### 监听并存储所有 kitties 事件到数据库
+* ![tables](cmdapp/tables.png)
+* 这里使用了Sqlite3数据库.
+
+#### 启动服务器&测试
+* s/build.sh # 启动区块链
+* cd cmdapp
+* make # 启动中心化服务器, 处理事件
+* make create # Alice创建猫
+* make create # Alice创建猫
+* make query # 对比当前DB和链上数据
+* node src/alice_ask_kitty.js 0 100 # Alice卖第0只猫, 100钱.
+* make query # 对比当前DB和链上数据
+* node src/bob_buy_kitty.js 0 100 # Bob买猫
+* make query # 对比当前DB和链上数据
+
+### 设计并讨论如何使用事件和链下数据库来简化链上存储
+```text
+下面提出个需求, 要遍历所有在出售的猫. 
+我们可以在维护一个数组保存于链上代表在出售的猫. 但是这样每次有买卖
+的时候, 对链的操作会稍微多一下, 并且对链空间的需求会大一些. 
+
+不带入更多链操作和消耗更多链空间的前提下, 实现这个需求
+我们可以监听链上每个块中的事件:
+Ask(AccountId, KittyIndex, Option<Balance>),
+Sold(AccountId, AccountId, KittyIndex, Balance),
+根据监听的事件来维护中心化数据库. 
+
+举个例子: 
+在Mysql中建立表 t_kitty_price { kitty_id, price, owner }
+
+收到Ask事件, 我们可以 insert 到 t_kitty_price. 
+收到Sold事件, 我们可以从 t_kitty_price 中删除. 
+展示出售的猫的时候, 可以遍历 t_kitty_price 表.
 ```
 
-Initialize your Wasm Build environment:
 
-```bash
-./scripts/init.sh
-```
-
-Build Wasm and native code:
-
-```bash
-cargo build --release
-```
-
-## Run
-
-### Single node development chain
-
-Purge any existing developer chain state:
-
-```bash
-./target/release/substrate-kitties purge-chain --dev
-```
-
-Start a development chain with:
-
-```bash
-./target/release/substrate-kitties --dev
-```
-
-Detailed logs may be shown by running the node with the following environment variables set: `RUST_LOG=debug RUST_BACKTRACE=1 cargo run -- --dev`.
-
-### Multi-node local testnet
-
-If you want to see the multi-node consensus algorithm in action locally, then you can create a local testnet with two validator nodes for Alice and Bob, who are the initial authorities of the genesis chain that have been endowed with testnet units.
-
-Optionally, give each node a name and expose them so they are listed on the Polkadot [telemetry site](https://telemetry.polkadot.io/#/Local%20Testnet).
-
-You'll need two terminal windows open.
-
-We'll start Alice's substrate node first on default TCP port 30333 with her chain database stored locally at `/tmp/alice`. The bootnode ID of her node is `QmRpheLN4JWdAnY7HGJfWFNbfkQCb6tFf4vvA6hgjMZKrR`, which is generated from the `--node-key` value that we specify below:
-
-```bash
-cargo run -- \
-  --base-path /tmp/alice \
-  --chain=local \
-  --alice \
-  --node-key 0000000000000000000000000000000000000000000000000000000000000001 \
-  --telemetry-url ws://telemetry.polkadot.io:1024 \
-  --validator
-```
-
-In the second terminal, we'll start Bob's substrate node on a different TCP port of 30334, and with his chain database stored locally at `/tmp/bob`. We'll specify a value for the `--bootnodes` option that will connect his node to Alice's bootnode ID on TCP port 30333:
-
-```bash
-cargo run -- \
-  --base-path /tmp/bob \
-  --bootnodes /ip4/127.0.0.1/tcp/30333/p2p/QmRpheLN4JWdAnY7HGJfWFNbfkQCb6tFf4vvA6hgjMZKrR \
-  --chain=local \
-  --bob \
-  --port 30334 \
-  --telemetry-url ws://telemetry.polkadot.io:1024 \
-  --validator
-```
-
-Additional CLI usage options are available and may be shown by running `cargo run -- --help`.

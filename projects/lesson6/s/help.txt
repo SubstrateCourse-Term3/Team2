@@ -1,0 +1,271 @@
+substrate-kitties 2.0.0-30d66fa-x86_64-linux-gnu
+
+Ratentlan
+substrate-kitties
+
+USAGE:
+    substrate-kitties [FLAGS] [OPTIONS]
+    substrate-kitties <SUBCOMMAND>
+
+FLAGS:
+        --alice                   
+            Shortcut for `--name Alice --validator` with session keys for `Alice` added to keystore.
+
+        --bob                     
+            Shortcut for `--name Bob --validator` with session keys for `Bob` added to keystore.
+
+        --charlie                 
+            Shortcut for `--name Charlie --validator` with session keys for `Charlie` added to keystore.
+
+        --dave                    
+            Shortcut for `--name Dave --validator` with session keys for `Dave` added to keystore.
+
+        --dev                     
+            Specify the development chain.
+
+        --eve                     
+            Shortcut for `--name Eve --validator` with session keys for `Eve` added to keystore.
+
+        --ferdie                  
+            Shortcut for `--name Ferdie --validator` with session keys for `Ferdie` added to keystore.
+
+        --force-authoring         
+            Enable authoring even when offline.
+
+        --grafana-external        
+            Listen to all Grafana data source interfaces.
+            
+            Default is local.
+    -h, --help                    
+            Prints help information
+
+        --light                   
+            Experimental: Run in light client mode.
+
+        --no-grandpa              
+            Disable GRANDPA voter when running in validator mode, otherwise disables the GRANDPA observer.
+
+        --no-mdns                 
+            Disable mDNS discovery.
+            
+            By default, the network will use mDNS to discover other nodes on the local network. This disables it.
+            Automatically implied when using --dev.
+        --no-private-ipv4         
+            Allow connecting to private IPv4 addresses (as specified in [RFC1918](https://tools.ietf.org/html/rfc1918)),
+            unless the address was passed with `--reserved-nodes` or `--bootnodes`.
+        --no-telemetry            
+            Disable connecting to the Substrate telemetry server.
+            
+            Telemetry is on by default on global chains.
+        --one                     
+            Shortcut for `--name One --validator` with session keys for `One` added to keystore.
+
+        --password-interactive    
+            Use interactive shell for entering the password used by the keystore.
+
+        --reserved-only           
+            Whether to only allow connections to/from reserved nodes.
+            
+            If you are a validator your node might still connect to other validator nodes regardless of whether they are
+            defined as reserved nodes.
+        --rpc-external            
+            Listen to all RPC interfaces.
+            
+            Default is local.
+        --sentry                  
+            Enable sentry mode.
+            
+            The node will be started with the authority role and participate in consensus tasks as an "observer", it
+            will never actively participate regardless of whether it could (e.g. keys are available locally). This mode
+            is useful as a secure proxy for validators (which would run detached from the network), since we want this
+            node to participate in the full consensus protocols in order to have all needed consensus data available to
+            relay to private nodes.
+        --two                     
+            Shortcut for `--name Two --validator` with session keys for `Two` added to keystore.
+
+        --unsafe-pruning          
+            Force start with unsafe pruning settings.
+            
+            When running as a validator it is highly recommended to disable state pruning (i.e. 'archive') which is the
+            default. The node will refuse to start as a validator if pruning is enabled unless this option is set.
+        --validator               
+            Enable validator mode.
+            
+            The node will be started with the authority role and actively participate in any consensus task that it can
+            (e.g. depending on availability of local keys).
+    -V, --version                 
+            Prints version information
+
+        --ws-external             
+            Listen to all Websocket interfaces.
+            
+            Default is local.
+
+OPTIONS:
+    -d, --base-path <PATH>                           
+            Specify custom base path.
+
+        --bootnodes <URL>...                         
+            Specify a list of bootnodes.
+
+        --chain <CHAIN_SPEC>                         
+            Specify the chain specification (one of dev, local or staging).
+
+        --db-cache <MiB>                             
+            Limit the memory the database cache can use. [default: 1024]
+
+        --execution <STRATEGY>
+            The execution strategy that should be used by all execution contexts. [possible values: Native, Wasm, Both,
+            NativeElseWasm]
+        --execution-block-construction <STRATEGY>
+            The means of execution used when calling into the runtime while constructing blocks. [default: Wasm]
+            [possible values: Native, Wasm, Both, NativeElseWasm]
+        --execution-import-block <STRATEGY>
+            The means of execution used when calling into the runtime while importing blocks. [default: NativeElseWasm]
+            [possible values: Native, Wasm, Both, NativeElseWasm]
+        --execution-offchain-worker <STRATEGY>
+            The means of execution used when calling into the runtime while using an off-chain worker. [default: Native]
+            [possible values: Native, Wasm, Both, NativeElseWasm]
+        --execution-other <STRATEGY>
+            The means of execution used when calling into the runtime while not syncing, importing or constructing
+            blocks. [default: Native]  [possible values: Native, Wasm, Both, NativeElseWasm]
+        --execution-syncing <STRATEGY>
+            The means of execution used when calling into the runtime while syncing blocks. [default: NativeElseWasm]
+            [possible values: Native, Wasm, Both, NativeElseWasm]
+        --grafana-port <PORT>                        
+            Specify Grafana data source server TCP Port.
+
+        --in-peers <COUNT>
+            Specify the maximum number of incoming connections we're accepting. [default: 25]
+
+        --keystore-path <PATH>                       
+            Specify custom keystore path.
+
+        --listen-addr <LISTEN_ADDR>...               
+            Listen on this multiaddress.
+
+    -l, --log <LOG_PATTERN>                          
+            Sets a custom logging filter.
+
+        --max-parallel-downloads <COUNT>
+            Maximum number of peers to ask the same blocks in parallel.
+            
+            This allows downlading announced blocks from multiple peers. Decrease to save traffic and risk increased
+            latency. [default: 5]
+        --name <NAME>                                
+            The human-readable name for this node.
+            
+            The node name will be reported to the telemetry server, if enabled.
+        --node-key <KEY>                             
+            The secret key to use for libp2p networking.
+            
+            The value is a string that is parsed according to the choice of `--node-key-type` as follows:
+            
+            `ed25519`: The value is parsed as a hex-encoded Ed25519 32 bytes secret key, i.e. 64 hex characters.
+            
+            The value of this option takes precedence over `--node-key-file`.
+            
+            WARNING: Secrets provided as command-line arguments are easily exposed. Use of this option should be limited
+            to development and testing. To use an externally managed secret key, use `--node-key-file` instead.
+        --node-key-file <FILE>
+            The file from which to read the node's secret key to use for libp2p networking.
+            
+            The contents of the file are parsed according to the choice of `--node-key-type` as follows:
+            
+            `ed25519`: The file must contain an unencoded 32 bytes Ed25519 secret key.
+            
+            If the file does not exist, it is created with a newly generated secret key of the chosen type.
+        --node-key-type <TYPE>
+            The type of secret key to use for libp2p networking.
+            
+            The secret key of the node is obtained as follows:
+            
+            * If the `--node-key` option is given, the value is parsed as a secret key according to the type. See the
+            documentation for `--node-key`.
+            
+            * If the `--node-key-file` option is given, the secret key is read from the specified file. See the
+            documentation for `--node-key-file`.
+            
+            * Otherwise, the secret key is read from a file with a predetermined, type-specific name from the chain-
+            specific network config directory inside the base directory specified by `--base-dir`. If this file
+            does not exist, it is created with a newly generated secret key of the chosen type.
+            
+            The node's secret key determines the corresponding public key and hence the node's peer ID in the context of
+            libp2p. [default: Ed25519]  [possible values: Ed25519]
+        --offchain-worker <ENABLED>
+            Should execute offchain workers on every block.
+            
+            By default it's only enabled for nodes that are authoring new blocks. [default: WhenValidating]  [possible
+            values: Always, Never, WhenValidating]
+        --out-peers <COUNT>
+            Specify the number of outgoing connections we're trying to maintain. [default: 25]
+
+        --password <password>                        
+            Password used by the keystore.
+
+        --password-filename <PATH>                   
+            File that contains the password used by the keystore.
+
+        --pool-kbytes <COUNT>
+            Maximum number of kilobytes of all transactions stored in the pool. [default: 10240]
+
+        --pool-limit <COUNT>
+            Maximum number of transactions in the transaction pool. [default: 512]
+
+        --port <PORT>                                
+            Specify p2p protocol TCP port.
+            
+            Only used if --listen-addr is not specified.
+        --pruning <PRUNING_MODE>
+            Specify the state pruning mode, a number of blocks to keep or 'archive'.
+            
+            Default is to keep all block states if the node is running as a validator (i.e. 'archive'), otherwise state
+            is only kept for the last 256 blocks.
+        --reserved-nodes <URL>...                    
+            Specify a list of reserved node addresses.
+
+        --rpc-cors <ORIGINS>                         
+            Specify browser Origins allowed to access the HTTP & WS RPC servers.
+            
+            A comma-separated list of origins (protocol://domain or special `null` value). Value of `all` will disable
+            origin validation. Default is to allow localhost, https://polkadot.js.org and https://substrate-ui.parity.io
+            origins. When running in --dev mode the default is to allow all origins.
+        --rpc-port <PORT>                            
+            Specify HTTP RPC server TCP port.
+
+        --sentry-nodes <URL>...                      
+            Specify a list of sentry node public addresses.
+
+        --state-cache-size <Bytes>                   
+            Specify the state cache size. [default: 67108864]
+
+        --telemetry-url <URL VERBOSITY>...           
+            The URL of the telemetry server to connect to.
+            
+            This flag can be passed multiple times as a mean to specify multiple telemetry endpoints. Verbosity levels
+            range from 0-9, with 0 denoting the least verbosity. If no verbosity level is specified the default is 0.
+        --tracing-receiver <RECEIVER>
+            Receiver to process tracing messages [default: Log]  [possible values: Log, Telemetry, Grafana]
+
+        --tracing-targets <TARGETS>                  
+            Comma separated list of targets for tracing
+
+        --wasm-execution <METHOD>
+            Method for executing Wasm runtime code. [default: Interpreted]  [possible values: Interpreted]
+
+        --ws-max-connections <COUNT>                 
+            Maximum number of WS RPC server connections.
+
+        --ws-port <PORT>                             
+            Specify WebSockets RPC server TCP port.
+
+
+SUBCOMMANDS:
+    build-spec       Build a spec.json file, outputting to stdout.
+    check-block      Re-validate a known block.
+    export-blocks    Export blocks to a file. This file can only be re-imported if it is in binary format (not
+                     JSON!).
+    help             Prints this message or the help of the given subcommand(s)
+    import-blocks    Import blocks from file.
+    purge-chain      Remove the whole chain data.
+    revert           Revert chain to the previous state.
