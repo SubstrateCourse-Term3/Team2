@@ -108,7 +108,7 @@ decl_module! {
 			} else {
 				<KittyPrices<T>>::remove(kitty_id);
 			}
-
+				// 作业： 添加`Ask` event,这个本来就有
 			Self::deposit_event(RawEvent::Ask(sender, kitty_id, price));
 		}
 
@@ -130,7 +130,7 @@ decl_module! {
 			<KittyPrices<T>>::remove(kitty_id);
 
 			Self::do_transfer(&owner, &sender, kitty_id);
-
+			// 作业： 添加`Sold` event,这个本来就有
 			Self::deposit_event(RawEvent::Sold(owner, sender, kitty_id, kitty_price));
 		}
 	}
