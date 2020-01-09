@@ -1,6 +1,6 @@
 use support::{
 	decl_module, decl_storage, decl_event, ensure, StorageValue, StorageMap,
-	Parameter, traits::{Randomness, Currency, ExistenceRequirement}
+	Parameter, traits::{Randomness, Currency, ExistenceRequirement},
 };
 use sp_runtime::traits::{SimpleArithmetic, Bounded, Member};
 use codec::{Encode, Decode};
@@ -18,8 +18,27 @@ pub trait Trait: system::Trait {
 
 type BalanceOf<T> = <<T as Trait>::Currency as Currency<<T as system::Trait>::AccountId>>::Balance;
 
-#[derive(Encode, Decode)]
 pub struct Kitty(pub [u8; 16]);
+
+impl codec::Encode for Kitty {
+	fn encode_to<EncOut: codec::Output>(&self, dest: &mut EncOut) {
+		codec::Encode::encode_to(&self.0, dest)
+	}
+}
+
+impl codec::EncodeLike for Kitty {}
+
+impl Decode for Kitty {
+	fn decode<DecIn: codec::Input>(input: &mut DecIn) -> result::Result<Self, codec::Error> {
+		Ok(Kitty({
+			let res = Decode::decode(input);
+			match res {
+				Err(_) => return Err("Error decoding field Kitty.0".into()),
+				Ok(a) => a,
+			}
+		}))
+	}
+}
 
 type KittyLinkedItem<T> = LinkedItem<<T as Trait>::KittyIndex>;
 type OwnedKittiesList<T> = LinkedList<OwnedKitties<T>, <T as system::Trait>::AccountId, <T as Trait>::KittyIndex>;
@@ -86,10 +105,10 @@ decl_module! {
 		}
 
 		/// Transfer a kitty to new owner
- 		pub fn transfer(origin, to: T::AccountId, kitty_id: T::KittyIndex) {
- 			let sender = ensure_signed(origin)?;
+		pub fn transfer(origin, to: T::AccountId, kitty_id: T::KittyIndex) {
+			let sender = ensure_signed(origin)?;
 
-  			ensure!(<OwnedKitties<T>>::exists(&(sender.clone(), Some(kitty_id))), "Only owner can transfer kitty");
+			ensure!(<OwnedKitties<T>>::exists(&(sender.clone(), Some(kitty_id))), "Only owner can transfer kitty");
 
 			Self::do_transfer(&sender, &to, kitty_id);
 
@@ -97,7 +116,7 @@ decl_module! {
 		}
 
 		/// Set a price for a kitty for sale
-		/// None to delist the kitty
+		/// None to delete the kitty
 		pub fn ask(origin, kitty_id: T::KittyIndex, price: Option<BalanceOf<T>>) {
 			let sender = ensure_signed(origin)?;
 
@@ -163,6 +182,7 @@ impl<T: Trait> Module<T> {
 		<OwnedKittiesList<T>>::append(owner, kitty_id);
 	}
 
+	//noinspection ALL
 	fn insert_kitty(owner: &T::AccountId, kitty_id: T::KittyIndex, kitty: Kitty) {
 		// Create and store kitty
 		<Kitties<T>>::insert(kitty_id, kitty);
@@ -179,8 +199,8 @@ impl<T: Trait> Module<T> {
 		ensure!(kitty1.is_some(), "Invalid kitty_id_1");
 		ensure!(kitty2.is_some(), "Invalid kitty_id_2");
 		ensure!(kitty_id_1 != kitty_id_2, "Needs different parent");
-		ensure!(Self::kitty_owner(&kitty_id_1).map(|owner| owner == *sender).unwrap_or(false), "Not onwer of kitty1");
- 		ensure!(Self::kitty_owner(&kitty_id_2).map(|owner| owner == *sender).unwrap_or(false), "Not owner of kitty2");
+		ensure!(Self::kitty_owner(&kitty_id_1).map(|owner| owner == *sender).unwrap_or(false), "Not owner of kitty1");
+		ensure!(Self::kitty_owner(&kitty_id_2).map(|owner| owner == *sender).unwrap_or(false), "Not owner of kitty2");
 
 		let kitty_id = Self::next_kitty_id()?;
 
@@ -201,11 +221,12 @@ impl<T: Trait> Module<T> {
 		Ok(kitty_id)
 	}
 
-	fn do_transfer(from: &T::AccountId, to: &T::AccountId, kitty_id: T::KittyIndex)  {
- 		<OwnedKittiesList<T>>::remove(&from, kitty_id);
- 		<OwnedKittiesList<T>>::append(&to, kitty_id);
- 		<KittyOwners<T>>::insert(kitty_id, to);
- 	}
+	//noinspection ALL
+	fn do_transfer(from: &T::AccountId, to: &T::AccountId, kitty_id: T::KittyIndex) {
+		<OwnedKittiesList<T>>::remove(&from, kitty_id);
+		<OwnedKittiesList<T>>::append(&to, kitty_id);
+		<KittyOwners<T>>::insert(kitty_id, to);
+	}
 }
 
 /// Tests for Kitties module
@@ -214,6 +235,7 @@ mod tests {
 	use super::*;
 
 	use primitives::H256;
+	#[allow(unused_imports)]
 	use support::{impl_outer_origin, assert_ok, parameter_types, weights::Weight};
 	use sp_runtime::{
 		traits::{BlakeTwo256, IdentityLookup}, testing::Header, Perbill,
@@ -260,19 +282,21 @@ mod tests {
 		type Balance = u64;
 		type OnFreeBalanceZero = ();
 		type OnNewAccount = ();
-		type Event = ();
 		type TransferPayment = ();
 		type DustRemoval = ();
+		type Event = ();
 		type ExistentialDeposit = ExistentialDeposit;
 		type TransferFee = TransferFee;
 		type CreationFee = CreationFee;
 	}
+
 	impl Trait for Test {
+		type Event = ();
 		type KittyIndex = u32;
 		type Currency = balances::Module<Test>;
 		type Randomness = randomness_collective_flip::Module<Test>;
-		type Event = ();
 	}
+
 	type OwnedKittiesTest = OwnedKitties<Test>;
 
 	// This function basically just builds a genesis storage key/value store according to

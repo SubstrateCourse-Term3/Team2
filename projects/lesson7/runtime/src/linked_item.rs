@@ -3,20 +3,51 @@ use sp_runtime::traits::Member;
 use codec::{Encode, Decode};
 
 #[cfg_attr(feature = "std", derive(Debug, PartialEq, Eq))]
-#[derive(Encode, Decode)]
 pub struct LinkedItem<Value> {
 	pub prev: Option<Value>,
 	pub next: Option<Value>,
 }
 
+impl<Value> Encode for LinkedItem<Value> where Option<Value>: Encode {
+	fn encode_to<EncOut: codec::Output>(&self, dest: &mut EncOut) {
+		dest.push(&self.prev);
+		dest.push(&self.next);
+	}
+}
+
+impl<Value> Decode for LinkedItem<Value> where Option<Value>: Decode {
+	fn decode<DecIn: codec::Input>(
+		input: &mut DecIn,
+	) -> core::result::Result<Self, codec::Error> {
+		Ok(LinkedItem {
+			prev: {
+				let res = Decode::decode(input);
+				match res {
+					Err(_) => return Err("Error decoding field LinkedItem.prev".into()),
+					Ok(a) => a,
+				}
+			},
+			next: {
+				let res = Decode::decode(input);
+				match res {
+					Err(_) => return Err("Error decoding field LinkedItem.next".into()),
+					Ok(a) => a,
+				}
+			},
+		})
+	}
+}
+
+impl<Value> codec::EncodeLike for LinkedItem<Value> where Option<Value>: Encode {}
+
 pub struct LinkedList<Storage, Key, Value>(rstd::marker::PhantomData<(Storage, Key, Value)>);
 
 impl<Storage, Key, Value> LinkedList<Storage, Key, Value> where
-    Value: Parameter + Member + Copy,
-    Key: Parameter,
-    Storage: StorageMap<(Key, Option<Value>), LinkedItem<Value>, Query = Option<LinkedItem<Value>>>,
+	Value: Parameter + Member + Copy,
+	Key: Parameter,
+	Storage: StorageMap<(Key, Option<Value>), LinkedItem<Value>, Query=Option<LinkedItem<Value>>>,
 {
-    fn read_head(key: &Key) -> LinkedItem<Value> {
+	fn read_head(key: &Key) -> LinkedItem<Value> {
 		Self::read(key, None)
 	}
 

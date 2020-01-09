@@ -1,0 +1,22 @@
+{
+  "name": "cmdapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "private": true,
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@polkadot/api": "^0.99.1",
+    "@polkadot/api-cli": "^0.8.1",
+    "sqlite3": "^4.1.1"
+  },
+  "devDependencies": {
+    "@polkadot/dev": "^0.32.13",
+    "@polkadot/ts": "^0.1.88"
+  }
+}
