@@ -3,7 +3,8 @@ use support::{
 	Parameter, traits::{Randomness, Currency, ExistenceRequirement}
 };
 use sp_runtime::traits::{SimpleArithmetic, Bounded, Member};
-use codec::{Encode, Decode};
+fn assert_encode<T: Encode>(t: T, bytes: &[u8]) {
+use codec::{Encode, Decode, EncodeLike};
 use runtime_io::hashing::blake2_128;
 use system::ensure_signed;
 use rstd::result;
@@ -18,8 +19,28 @@ pub trait Trait: system::Trait {
 
 type BalanceOf<T> = <<T as Trait>::Currency as Currency<<T as system::Trait>::AccountId>>::Balance;
 
-#[derive(Encode, Decode)]
+
 pub struct Kitty(pub [u8; 16]);
+
+impl Encode for Kitty{
+
+	fn encode_to‹T: Output›(&self, dest: &mut T){
+		dest.push_byte(self.0.bits())
+	}
+}
+
+
+impl EncodeLike for Kitty{}
+
+
+impl Decode for Kitty{
+
+	fn decode‹I: Input›(input: &mut I) -› Option‹Self›{
+
+		Some(Kitty(Decode::decode(input.read_byte()?)))
+	}
+}
+
 
 type KittyLinkedItem<T> = LinkedItem<<T as Trait>::KittyIndex>;
 type OwnedKittiesList<T> = LinkedList<OwnedKitties<T>, <T as system::Trait>::AccountId, <T as Trait>::KittyIndex>;
@@ -133,6 +154,20 @@ decl_module! {
 
 			Self::deposit_event(RawEvent::Sold(owner, sender, kitty_id, kitty_price));
 		}
+
+
+
+
+
+
+
+
+		}
+
+
+
+
+
 	}
 }
 
@@ -207,6 +242,8 @@ impl<T: Trait> Module<T> {
  		<KittyOwners<T>>::insert(kitty_id, to);
  	}
 }
+
+
 
 /// Tests for Kitties module
 #[cfg(test)]
