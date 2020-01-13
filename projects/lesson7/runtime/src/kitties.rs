@@ -18,8 +18,23 @@ pub trait Trait: system::Trait {
 
 type BalanceOf<T> = <<T as Trait>::Currency as Currency<<T as system::Trait>::AccountId>>::Balance;
 
-#[derive(Encode, Decode)]
+//#[derive(Encode, Decode)]
 pub struct Kitty(pub [u8; 16]);
+
+//作业
+impl Encode for Kitty{
+	fn encode_to<T:Output>(&self, dest:&mut T){
+		dest.push(&self.0);
+	}
+}
+impl codec::EncodeLike for Kitty {}
+
+impl Decode for Vote {
+	fn decode<I: Input>(input: &mut I) -> core::result::Result<Self, codec::Error>{
+		Self::from_bits(input.read_byte()?).ok_or_else(|| codec::Error::from("Invalid id"))
+	}
+
+
 
 type KittyLinkedItem<T> = LinkedItem<<T as Trait>::KittyIndex>;
 type OwnedKittiesList<T> = LinkedList<OwnedKitties<T>, <T as system::Trait>::AccountId, <T as Trait>::KittyIndex>;
